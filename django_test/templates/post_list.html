@@ -11,6 +11,10 @@
 {% for post in posts %}
 <div>
     {{ post.title }}
+    <form action="/post_delete/{{ post.pk }}/" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Delete"/>
+    </form>
 </div>
 {% endfor %}
 </body>

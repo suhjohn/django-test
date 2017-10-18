@@ -32,13 +32,11 @@ def post_create(request):
         print(post)
         if post:
             return redirect(post_list)
-
     return render(request, 'post_create.html')
 
 
-def post_delete(request):
+def post_delete(request, pk):
     if request.method == 'POST':
-        pass
-
-    else:
-        return redirect(post_list)
+        post = Post.objects.get(pk=pk)
+        post.delete()
+    return redirect(post_list)
